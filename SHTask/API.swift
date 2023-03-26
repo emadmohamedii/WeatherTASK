@@ -74,7 +74,7 @@ class API {
             })
         })
     }
-
+    
     func regularRequest(apiRouter :URLRequestConvertible) -> Observable<APIResult<[String:Any]>> {
         return API.handleDataRequest(dataRequest: APIManager.shared.requestObservable(api: apiRouter)).map({ (response) -> APIResult<([String:Any])> in
             guard let response = response else {return .failure(error: .init())}
@@ -111,28 +111,5 @@ class API {
             if apiStatus { return APIResult.success(value: apiResponse) }
         })
     }
-   
-    func getForecastDetails(lat: String, lng: String) -> Observable<APIResult<ForecastResponseModel>> {
-        return API.handleDataRequest(dataRequest: APIManager.shared.requestObservable(api: APIRouter.forecastWeather(lat: lat, lng: lng))).map({ (response) -> APIResult<ForecastResponseModel> in
-            if (response ?? [:]).keys.contains("Error"){
-                if (response ?? [:]).keys.contains("IsInternetOff"){
-                    if let isInternetOff = response!["IsInternetOff"] as? Bool{
-                        if isInternetOff{
-                            return APIResult.failure(error: APICallError(critical: false, code: InternetConnectionErrorCode.offline.rawValue, reason: response!["Error"] as! String, message: response!["Error"] as! String))
-                        }
-                    }
-                }
-                return APIResult.failure(error: APICallError(critical: false, code: 1111, reason: response!["Error"] as! String, message: response!["Error"] as! String))
-            }
-            let json = JSON(response)
-            let apiResponse = ForecastResponseModel(fromJson: json)
-            let (apiStatus, _) = (true,APICallError.init(status: .success))
-            if apiStatus { return APIResult.success(value: apiResponse) }
-        })
-    }
-    
-
-
     
 }
-

@@ -16,24 +16,3 @@ extension UIStoryboard {
     }
 
 }
-
-
-extension UIStoryboard {
-    
-    var weatherHomeViewController: WeatherHomeViewController {
-        guard let viewController = instantiateViewController(withIdentifier: String(describing: WeatherHomeViewController.self)) as? WeatherHomeViewController else {
-            fatalError(String(describing: WeatherHomeViewController.self) + "\(NSLocalizedString("couldn't be found in Storyboard file", comment: ""))")
-        }
-        return viewController
-    }
-    
-    var weatherLocationsViewController: WeatherLocationsViewController {
-        guard let viewController = instantiateViewController(withIdentifier: String(describing: WeatherLocationsViewController.self)) as? WeatherLocationsViewController else {
-            fatalError(String(describing: WeatherLocationsViewController.self) + "\(NSLocalizedString("couldn't be found in Storyboard file", comment: ""))")
-        }
-        return viewController
-    }
-
-    
-    
-}
