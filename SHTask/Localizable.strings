@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  SHTask
+
+  Created by Emad Habib on 28/10/2022.
+  
+*/
+
+"couldn't be found in Storyboard file" = "couldn't be found in Storyboard file";
+"Generic Error" = "Generic Error";
+"HTTP status code 403" = "HTTP status code 403";
+"Could not parse the json" = "Could not parse the json";
+"Unable to contact the server" = "Unable to contact the server";
+"Slow internet connection" = "Slow internet connection";
+"Unknown error" = "Unknown error";
+"Network error" = "Network error";
+"OK" = "OK";
+
+
